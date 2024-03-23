@@ -11,7 +11,7 @@ import WeatherButton from './component/WeatherButton';
 // 4. 도시버튼을 클리할때 마다 도시별 날씨가 나온다
 // 5. 현재위치 버튼을 누르면 다시 현재위치 기반의 날씨가 나온다
 // 6. 데이터를 들고오는 동안 로딩 스피너가돈다.
-const weatherKey = process.env.REACT_APP_WEATHER_KEY;
+// const weatherKey = process.env.REACT_APP_WEATHER_KEY;
 
 function App() {
   const [weatherInfo, setWeatherInfo] = useState(null);
@@ -29,7 +29,9 @@ function App() {
   }
 
   const getWeatherByCurrentLocation = async (lat, lon) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
+    // let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=23f28d08e205e2b6c340da56df6982ae&units=metric`
+
              
     // let url = cityName ? 
     //             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
