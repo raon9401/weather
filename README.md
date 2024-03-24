@@ -1,7 +1,7 @@
-**날씨 API 사용 페이지**
+날씨 API 사용 페이지
 
-**Netlufy 링크**
-https://weather-raon.netlify.app/
+**Netlify 링크**
+- 링크 : https://weather-raon.netlify.app/
 
 
 
