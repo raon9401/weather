@@ -26,7 +26,9 @@
 
     border: 2px solid gray;
     border-radius: 40px;
-    padding: 70px;
+
+    width: 400px;
+    height: 200px;
 
     background-color: rgba(255, 255, 255, 50%);
 

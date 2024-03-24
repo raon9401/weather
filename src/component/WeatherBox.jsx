@@ -2,9 +2,8 @@ import React from 'react'
 
 const WeatherBox = ({ weatherInfo }) => {
   // 화씨 = 섭씨 * 1.8 + 32
-  console.log(weatherInfo);
   const calcFahrenheit = (fahrenheit) => {
-    return fahrenheit * 1.8 + 32;
+    return (fahrenheit * 1.8 + 32).toFixed(3);
   }
 
   return (
