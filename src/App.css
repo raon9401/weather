@@ -39,11 +39,17 @@
     gap: 10px;
 }
 
+
+/* Loading anmation */
 .loading-sun {
     width: 100px;
     height: 100px;
 
     animation: spin 1s linear infinite;
+}
+
+.up {
+    transform: translate(0, -10px);
 }
 
 @keyframes spin {

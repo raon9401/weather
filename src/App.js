@@ -50,7 +50,6 @@ function App() {
 
   useEffect(()=>{
     getCurrentLocation();
-
      // eslint-disable-next-line
   },[cityName])
 
