@@ -12,6 +12,8 @@ import WeatherButton from './component/WeatherButton';
 // 5. 현재위치 버튼을 누르면 다시 현재위치 기반의 날씨가 나온다
 // 6. 데이터를 들고오는 동안 로딩 스피너가돈다.
 // const weatherKey = process.env.REACT_APP_WEATHER_KEY;
+const weatherKey = "23f28d08e205e2b6c340da56df6982ae";
+
 
 function App() {
   const [weatherInfo, setWeatherInfo] = useState(null);
@@ -29,19 +31,12 @@ function App() {
   }
 
   const getWeatherByCurrentLocation = async (lat, lon) => {
-    // let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=23f28d08e205e2b6c340da56df6982ae&units=metric`
-
-             
-    // let url = cityName ? 
-    //             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
-    //             : `https://api.openweathermap.org/data/2.5/weather?appid=${weatherKey}&units=metric&q=${cityName}`;
-     
-    // let data = await fetch(url)
-    // .then(res => res.json())
-    // .then(res => {
-    //   return res;
-    // })
+    let url;
+    if(cityName){
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherKey}&units=metric`;
+    }else {
+      url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`;
+    }
 
     let response = await fetch(url);
     let data = await response.json();
@@ -51,8 +46,10 @@ function App() {
 
   useEffect(()=>{
     getCurrentLocation();
+
      // eslint-disable-next-line
   },[cityName])
+
 
   return (
     <div className='main'>
