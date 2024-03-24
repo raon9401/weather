@@ -38,3 +38,74 @@
     display: flex;
     gap: 10px;
 }
+
+/* Loading delay */
+
+.loading-time-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid gray;
+    border-radius: 40px;
+
+    padding: 20px;
+
+    background-color: rgba(255, 255, 255, 50%);
+
+}
+
+.loading-time-box>p {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+
+.loadingTimeBtn-wrap {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* Loading anmation */
+.loading-sun {
+    width: 100px;
+    height: 100px;
+
+    animation: spin 1s linear infinite;
+}
+
+.up {
+    animation: up 0.2s linear 1 forwards;
+    pointer-events: none;
+    /* transform: translate(0, -10px); */
+}
+
+@keyframes up {
+    100% {
+        transform: translate(0, -10px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(60deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-60deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

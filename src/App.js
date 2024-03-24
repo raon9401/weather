@@ -4,6 +4,7 @@ import WeatherBox from './component/WeatherBox';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WeatherButton from './component/WeatherButton';
+import LoadingTimeBtn from './component/LoadingTimeBtn';
 
 // 1. 앱이 실행 되자마자 현재 위치기반의 날씨가 보인다.
 // 2. 날씨 정보에는 도시, 섭씨, 화씨 날씨상태
@@ -18,6 +19,11 @@ const weatherKey = "23f28d08e205e2b6c340da56df6982ae";
 function App() {
   const [weatherInfo, setWeatherInfo] = useState(null);
   const [cityName, setCityName] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [loadingTimeIndex, setLoadingTimeIndex] = useState(0);
+
+  const loadingTimeArr = [0, 1000, 2000, 5000];
   const cities = ["paris","new york", "tokyo", "seoul"];
 
   const getCurrentLocation = () =>{
@@ -31,6 +37,7 @@ function App() {
   }
 
   const getWeatherByCurrentLocation = async (lat, lon) => {
+    setIsLoading(false);
     let url;
     if(cityName){
       url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherKey}&units=metric`;
@@ -42,11 +49,15 @@ function App() {
     let data = await response.json();
 
     setWeatherInfo(data);
+    
+    setTimeout(() => {
+      setIsLoading(true);
+    },loadingTimeArr[loadingTimeIndex])
+
   }
 
   useEffect(()=>{
-    getCurrentLocation();
-
+      getCurrentLocation();
      // eslint-disable-next-line
   },[cityName])
 
@@ -54,7 +65,8 @@ function App() {
   return (
     <div className='main'>
       <div className='container'>
-        <WeatherBox weatherInfo={weatherInfo}/>
+        <LoadingTimeBtn loadingTimeArr={loadingTimeArr} setLoadingTimeIndex={setLoadingTimeIndex}/>
+        <WeatherBox weatherInfo={weatherInfo} isLoading={isLoading}/>
         <WeatherButton cities={cities} setCityName={setCityName}/>
       </div>
     </div>
